@@ -14,12 +14,24 @@
 .hero-slideshow {
   position: relative;
   width: 100%;
-  max-width: var(--layout-max-width, 1050px);
-  height: 500px;
+  height: 100vh;
   overflow: hidden;
-  margin: 48px auto 0;
-  background-color: var(--color-cream);
-  padding: 0 16px;
+  margin: 0;
+  background-color: var(--color-gunmetal);
+  padding: 0;
+}
+
+/* Gradient overlay for header legibility */
+.hero-slideshow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(9, 18, 22, 0.4) 0%, rgba(9, 18, 22, 0.2) 50%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .slideshow-container {

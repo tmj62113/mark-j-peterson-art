@@ -247,8 +247,13 @@ button[type="submit"]:hover {
 
 .header,
 header {
-  background-color: #091216;
+  background-color: transparent;
   border-bottom: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 /* Header content - Three column flex layout */
@@ -293,7 +298,7 @@ header {
   }
 }
 
-/* Navigation links - Light text on dark background */
+/* Navigation links - Light text with shadow for visibility on any background */
 .nav a {
   color: var(--color-cream);
   font-family: var(--font-body);
@@ -302,11 +307,13 @@ header {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .nav a:hover {
   color: var(--color-rust);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 .nav-link {
@@ -316,12 +323,14 @@ header {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--color-rust);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* Header actions - Right column, takes remaining space and aligns right */
@@ -332,18 +341,20 @@ header {
   align-items: center;
 }
 
-/* Cart button - Light on dark background */
+/* Cart button - Light on transparent background with shadow */
 .cart-button {
   background: transparent;
   color: var(--color-cream);
   padding: 8px;
   border-radius: var(--radius-full);
   transition: all 0.2s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
 }
 
 .cart-button:hover {
   background: rgba(247, 246, 239, 0.1);
   color: var(--color-rust);
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.8)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9));
 }
 
 .cart-badge {
