@@ -7,57 +7,70 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-section">
-          <img src={theme.logo} alt={theme.logoAlt} className="footer-logo" />
+        {/* Logo Section - Left */}
+        <div className="footer-section footer-logo-section">
+          <img src={theme.logoDark} alt={theme.logoAlt} className="footer-logo" />
         </div>
 
-        <div className="footer-section">
-          <h4>Quick Links</h4>
+        {/* Navigation Links - Middle */}
+        <div className="footer-section footer-nav-section">
           <nav className="footer-nav">
-            <Link to="/products">Products</Link>
-            <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
+            <Link to="/about">About</Link>
+            <Link to="/products">Shop</Link>
           </nav>
         </div>
 
-        <div className="footer-section">
-          <h4>Admin</h4>
-          <nav className="footer-nav">
-            <Link to="/admin">Admin Dashboard</Link>
-          </nav>
-        </div>
+        {/* Newsletter & Connect Section - Right */}
+        <div className="footer-section footer-connect-section">
+          {/* Newsletter Signup */}
+          <div className="newsletter-form">
+            <form role="form">
+              <label htmlFor="footerEmailSignUp">Sign up for the newsletter</label>
+              <input
+                type="email"
+                id="footerEmailSignUp"
+                name="email"
+                placeholder="Email Address"
+                aria-label="Email Address"
+                className="form-control"
+              />
+              <button type="submit" className="btn btn-primary newsletter-btn">Subscribe to MarkJPetersonArt</button>
+            </form>
+          </div>
 
-        <div className="footer-section">
-          <h4>Connect</h4>
-          <div className="social-links">
-            {theme.social.facebook && (
-              <a href={theme.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                </svg>
-              </a>
-            )}
-            {theme.social.instagram && (
-              <a href={theme.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </a>
-            )}
-            {theme.social.twitter && (
-              <a href={theme.social.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                </svg>
-              </a>
-            )}
-            {theme.social.pinterest && (
-              <a href={theme.social.pinterest} target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
-                </svg>
-              </a>
-            )}
+          {/* Social Links */}
+          <div className="social-links-section">
+            <h2>Follow</h2>
+            <ul className="social-links">
+              {theme.social.instagram && (
+                <li>
+                  <a href={theme.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none">
+                      <path fill="currentColor" fillRule="evenodd" d="M13.268 3.73a.96.96 0 1 1-1.921-.001.96.96 0 0 1 1.921 0Zm-5.234 6.937a2.668 2.668 0 1 1-.001-5.335 2.668 2.668 0 0 1 0 5.335Zm0-6.775A4.11 4.11 0 0 0 3.923 8a4.11 4.11 0 0 0 4.11 4.108A4.11 4.11 0 0 0 12.146 8a4.11 4.11 0 0 0-4.111-4.108Zm6.516 7.34c-.006.508-.099 1.01-.276 1.486a2.65 2.65 0 0 1-1.519 1.519 4.446 4.446 0 0 1-1.486.275c-.844.039-1.097.047-3.235.047s-2.39-.008-3.235-.047a4.446 4.446 0 0 1-1.486-.275 2.484 2.484 0 0 1-.92-.599 2.477 2.477 0 0 1-.6-.92 4.422 4.422 0 0 1-.276-1.485C1.48 10.39 1.471 10.136 1.471 8s.008-2.39.046-3.233c.007-.507.1-1.01.276-1.485.128-.348.333-.662.6-.92.257-.265.572-.47.92-.598.475-.177.978-.27 1.486-.275.844-.04 1.097-.047 3.235-.047s2.391.008 3.235.047c.508.005 1.01.098 1.486.275.348.128.662.333.921.598.266.258.47.572.598.92.177.475.27.978.276 1.485.04.844.047 1.097.047 3.233s-.008 2.39-.047 3.233Zm1.441-6.53a5.87 5.87 0 0 0-.372-1.942 3.918 3.918 0 0 0-.923-1.417A3.915 3.915 0 0 0 13.278.42 5.878 5.878 0 0 0 11.334.05C10.48.009 10.208 0 8.034 0S5.587.01 4.733.049A5.878 5.878 0 0 0 2.79.42a3.915 3.915 0 0 0-1.418.923c-.407.4-.722.883-.924 1.417a5.887 5.887 0 0 0-.372 1.942C.038 5.555.028 5.827.028 8s.01 2.445.048 3.299c.014.663.14 1.32.372 1.941.202.535.517 1.018.924 1.418.4.406.884.722 1.418.922a5.863 5.863 0 0 0 1.943.372c.854.039 1.127.048 3.3.048 2.175 0 2.447-.009 3.301-.048a5.863 5.863 0 0 0 1.944-.372 4.092 4.092 0 0 0 2.341-2.34 5.866 5.866 0 0 0 .372-1.941c.039-.854.048-1.126.048-3.299s-.01-2.445-.048-3.298Z" clipRule="evenodd"/>
+                    </svg>
+                  </a>
+                </li>
+              )}
+              {theme.social.facebook && (
+                <li>
+                  <a href={theme.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" fill="none">
+                      <path fill="currentColor" fillRule="evenodd" d="M9.005 2.781H6.432c-.304 0-.643.397-.643.922v1.834h3.217L8.52 8.15H5.79V16H2.753V8.151H0V5.537h2.754V3.999C2.754 1.793 4.304 0 6.432 0h2.573v2.781Z" clipRule="evenodd"/>
+                    </svg>
+                  </a>
+                </li>
+              )}
+              {theme.social.pinterest && (
+                <li>
+                  <a href={theme.social.pinterest} target="_blank" rel="noopener noreferrer" aria-label="Visit our Pinterest">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" fill="none">
+                      <path fill="currentColor" fillRule="evenodd" d="M5.84 11.243c-.474 2.34-1.05 4.585-2.763 5.757-.527-3.537.775-6.194 1.382-9.014-1.033-1.64.124-4.94 2.3-4.127 2.68 1-2.32 6.096 1.036 6.734 3.503.664 4.934-5.738 2.76-7.82-3.137-3.006-9.135-.07-8.397 4.235.18 1.053 1.33 1.372.46 2.824C.61 9.412.01 7.916.089 5.922.211 2.658 3.192.374 6.183.057c3.783-.4 7.333 1.312 7.824 4.67.551 3.792-1.707 7.899-5.753 7.604-1.097-.082-1.556-.595-2.415-1.088Z" clipRule="evenodd"/>
+                    </svg>
+                  </a>
+                </li>
+              )}
+            </ul>
           </div>
         </div>
       </div>

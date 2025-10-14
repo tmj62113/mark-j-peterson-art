@@ -14,6 +14,7 @@ export const theme = {
 
   // Logo and images
   logo: "/peterson_logo.png",
+  logoDark: "/peterson_logo_dark.png", // Dark logo for light backgrounds (footer)
   logoAlt: "Mark J Peterson Art Logo",
   favicon: "/favicon.ico",
 
@@ -51,7 +52,7 @@ export const theme = {
   // ===================================================
   colors: {
     // Primary brand colors - Dark blues for text and headings
-    primary: "#122D38", // Gunmetal - main text, headings, footer
+    primary: "#091216", // Gunmetal - main text, headings, footer
     primaryHover: "#0C3A4B", // Charcoal - darker shade on hover
     primaryText: "#F7F6EF", // Cream text on dark backgrounds
 
@@ -69,7 +70,7 @@ export const theme = {
     surfaceHover: "#EFEEE5", // Slightly darker cream on hover
 
     // Text colors
-    text: "#122D38", // Gunmetal - primary text
+    text: "#091216", // Gunmetal - primary text
     textSecondary: "#0C3A4B", // Charcoal - secondary/muted text
     textTertiary: "#B49A68", // Lion - tertiary/accent text
 

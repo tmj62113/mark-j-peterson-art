@@ -22,11 +22,7 @@ export default function Header() {
     <>
       <header className="header">
         <div className="header-content">
-          <Link to="/" className="logo">
-            <img src={theme.logo} alt={theme.logoAlt} />
-          </Link>
-
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Left */}
           <nav className="nav desktop-nav">
             <Link to="/products">Shop</Link>
             <a href="/#about">About</a>
@@ -39,7 +35,12 @@ export default function Header() {
             )}
           </nav>
 
-          {/* Mobile/Desktop Actions */}
+          {/* Logo - Center */}
+          <Link to="/" className="logo">
+            <img src={theme.logo} alt={theme.logoAlt} />
+          </Link>
+
+          {/* Mobile/Desktop Actions - Right */}
           <div className="header-actions">
             {isAuthenticated && (
               <div className="user-menu">

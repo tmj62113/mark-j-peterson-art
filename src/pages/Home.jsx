@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './Home.css';
 
@@ -90,34 +90,6 @@ export default function Home() {
     { image: '/images/homepage/artwork/IMG_1746.PNG', size: 'tall' },
     { image: '/images/homepage/artwork/IMG_1748.JPG', size: 'medium' },
     { image: '/images/homepage/artwork/IMG_1749.PNG', size: 'tall' },
-  ];
-
-  // Featured artwork products
-  const featuredArtwork = [
-    {
-      id: 0,
-      title: 'Clockwork Heart',
-      image: '/images/homepage/featured/IMG_1712.PNG',
-      price: '$165',
-    },
-    {
-      id: 1,
-      title: 'Brass Butterfly',
-      image: '/images/homepage/artwork/IMG_1714.JPG',
-      price: '$145',
-    },
-    {
-      id: 2,
-      title: 'Steam Engine Dreams',
-      image: '/images/homepage/artwork/IMG_1720.PNG',
-      price: '$185',
-    },
-    {
-      id: 3,
-      title: 'Mechanical Rose',
-      image: '/images/homepage/featured/IMG_1712.PNG',
-      price: '$155',
-    },
   ];
 
   return (
@@ -214,25 +186,6 @@ export default function Home() {
           <p>
             Each piece is hand-crafted with archival materials, celebrating the beauty of brass, copper, and the intricate dance of gears and springs.
           </p>
-        </div>
-      </section>
-
-      {/* Featured Artwork Section */}
-      <section className="featured-section">
-        <div className="container">
-          <h2>Featured Artwork</h2>
-
-          <div className="featured-grid">
-            {featuredArtwork.map((artwork) => (
-              <Link key={artwork.id} to={`#artwork-${artwork.id}`} className="featured-card">
-                <img src={artwork.image} alt={artwork.title} />
-                <div className="featured-info">
-                  <h3>{artwork.title}</h3>
-                  <p className="price">{artwork.price}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
     </div>
