@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useCartStore } from '../stores/cartStore';
 import { useAuth } from '../contexts/AuthContext';
 import { theme } from '../config/theme';
@@ -8,10 +8,48 @@ import MobileMenu from './MobileMenu';
 
 export default function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const items = useCartStore((state) => state.items);
   const itemCount = items.reduce((count, item) => count + item.quantity, 0);
   const { isAuthenticated, logout, user } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+
+          // Track if we've scrolled past the threshold
+          setIsScrolled(currentScrollY > 100);
+
+          // At the top of the page - always show
+          if (currentScrollY <= 100) {
+            setIsVisible(true);
+          }
+          // Scrolling down - hide header immediately
+          else if (currentScrollY > lastScrollY) {
+            setIsVisible(false);
+          }
+          // Scrolling up - show header
+          else if (currentScrollY < lastScrollY) {
+            setIsVisible(true);
+          }
+
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const handleLogout = async () => {
     await logout();
@@ -20,18 +58,18 @@ export default function Header() {
 
   return (
     <>
-      <header className="header">
+      <header className={`header ${isVisible ? 'header--visible' : 'header--hidden'} ${isScrolled ? 'header--scrolled' : ''}`}>
         <div className="header-content">
           {/* Desktop Navigation - Left */}
           <nav className="nav desktop-nav">
-            <Link to="/products">Shop</Link>
-            <a href="/#about">About</a>
-            <Link to="/contact">Contact</Link>
+            <NavLink to="/products" className="nav-link">Shop</NavLink>
+            <a href="/#about" className="nav-link">About</a>
+            <NavLink to="/contact" className="nav-link">Contact</NavLink>
             {user?.role === 'admin' && (
-              <Link to="/admin" className="admin-nav-link">
+              <NavLink to="/admin" className="nav-link admin-nav-link">
                 <span className="material-symbols-outlined">dashboard</span>
                 Admin
-              </Link>
+              </NavLink>
             )}
           </nav>
 

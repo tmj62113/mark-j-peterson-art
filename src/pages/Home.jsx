@@ -8,11 +8,9 @@ export default function Home() {
 
   // Hero slideshow images
   const slideshowImages = [
-    { id: 1, src: '/images/homepage/slideshow/IMG_1719.JPG', alt: 'Steampunk Dreams' },
-    { id: 2, src: '/images/homepage/slideshow/IMG_1724.JPG', alt: 'Industrial Elegance' },
-    { id: 3, src: '/images/homepage/slideshow/IMG_1727.JPG', alt: 'Victorian Automatons' },
-    { id: 4, src: '/images/homepage/slideshow/IMG_1731.JPG', alt: 'Artistic Machinery' },
-    { id: 5, src: '/images/homepage/slideshow/IMG_1751.JPG', alt: 'Creative Visions' },
+    { id: 1, src: '/images/homepage/slideshow/IMG_1724.JPG', alt: 'Artwork 1' },
+    { id: 2, src: '/images/homepage/slideshow/IMG_1726.JPG', alt: 'Artwork 2' },
+    { id: 3, src: '/images/homepage/slideshow/IMG_1731.JPG', alt: 'Artwork 3' },
   ];
 
   // Auto-advance slideshow every 5 seconds
@@ -124,11 +122,18 @@ export default function Home() {
               />
             ))}
           </div>
+
+          {/* Scroll Down Arrow */}
+          <a href="#collections" className="scroll-down-arrow" aria-label="Scroll to collections">
+            <div className="arrow">
+              <img src="/icone/arrow_down.svg" alt="Scroll down" />
+            </div>
+          </a>
         </div>
       </section>
 
       {/* Collections Section */}
-      <section className="collections-section">
+      <section id="collections" className="collections-section">
         <div className="container">
           <div className="section-header">
             <h2>MJ Peterson Art Collections</h2>

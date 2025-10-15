@@ -245,6 +245,7 @@ button[type="submit"]:hover {
    HEADER & NAVIGATION
    ===================================== */
 
+/* Header - Default transparent at top */
 .header,
 header {
   background-color: transparent;
@@ -254,12 +255,43 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Interior pages - Gunmetal header background (when NOT on home page) */
+body:not(:has(.home-container)) .header,
+body:not(:has(.home-container)) header {
+  background-color: var(--color-gunmetal);
+  border-bottom: 1px solid rgba(247, 246, 239, 0.1);
+  position: sticky;
+}
+
+/* Header visible - default state */
+.header.header--visible {
+  transform: translateY(0);
+}
+
+/* When scrolled, switch to fixed positioning smoothly */
+.header.header--scrolled {
+  position: fixed;
+}
+
+/* Header hidden when scrolling down */
+.header.header--hidden {
+  position: fixed;
+  transform: translateY(-100%);
+}
+
+/* When scrolled past threshold and visible, add background */
+.header.header--scrolled.header--visible {
+  background-color: var(--color-gunmetal);
+  border-bottom: 1px solid rgba(247, 246, 239, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Header content - Three column flex layout */
 .header-content {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 24px 16px;
   display: flex;
   align-items: flex-start;
   max-width: none;
@@ -299,7 +331,8 @@ header {
 }
 
 /* Navigation links - Light text with shadow for visibility on any background */
-.nav a {
+.nav a,
+.nav-link {
   color: var(--color-cream);
   font-family: var(--font-body);
   font-size: 14px;
@@ -311,25 +344,19 @@ header {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-.nav a:hover {
-  color: var(--color-rust);
+/* Hover state - cream color with enhanced shadow */
+.nav a:hover,
+.nav-link:hover {
+  color: #f7f6ef;
+  font-weight: 900;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
-.nav-link {
-  color: var(--color-cream);
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: all 0.15s ease;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.8);
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--color-rust);
+/* Active state - cream color with bold weight */
+.nav-link.active,
+.nav a.active {
+  color: #f7f6ef;
+  font-weight: 900;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
@@ -348,13 +375,15 @@ header {
   padding: 8px;
   border-radius: var(--radius-full);
   transition: all 0.2s ease;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
 }
 
 .cart-button:hover {
   background: rgba(247, 246, 239, 0.1);
   color: var(--color-rust);
-  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.8)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9));
 }
 
 .cart-badge {
