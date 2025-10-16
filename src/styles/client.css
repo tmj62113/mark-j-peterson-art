@@ -255,7 +255,8 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 /* Interior pages - Gunmetal header background (when NOT on home page) */
@@ -287,6 +288,17 @@ body:not(:has(.home-container)) header {
   background-color: var(--color-gunmetal);
   border-bottom: 1px solid rgba(247, 246, 239, 0.1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide header when mega menu is open */
+.header.header--mega-menu-open {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Hover state when mega menu is open - matches Kelly Wearstler */
+.header.hover {
+  /* Additional styling for hover state can go here if needed */
 }
 
 /* Header content - Three column flex layout */
@@ -332,7 +344,8 @@ body:not(:has(.home-container)) header {
 
 /* Navigation links - Light text with shadow for visibility on any background */
 .nav a,
-.nav-link {
+.nav-link,
+.nav-link-button {
   color: var(--color-cream);
   font-family: var(--font-body);
   font-size: 14px;
@@ -344,9 +357,20 @@ body:not(:has(.home-container)) header {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
+/* Nav link button - Remove default button styles */
+.nav-link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline;
+  text-align: left;
+}
+
 /* Hover state - cream color with enhanced shadow */
 .nav a:hover,
-.nav-link:hover {
+.nav-link:hover,
+.nav-link-button:hover {
   color: #f7f6ef;
   font-weight: 900;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);

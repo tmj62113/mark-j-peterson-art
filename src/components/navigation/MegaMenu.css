@@ -1,0 +1,531 @@
+/* =====================================================
+   MEGA MENU - Kelly Wearstler Inspired
+   ===================================================== */
+
+/* Overlay */
+.mega-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(9, 18, 22, 0.8);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.mega-menu.active .mega-menu-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Main Container */
+.mega-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.mega-menu.active {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Content Panel - Slides down from top like Kelly Wearstler */
+.mega-menu-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  transform: translateY(-100%);
+  transition: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  will-change: transform;
+}
+
+/* Animation class triggers the transition - matches KW's .animation class */
+.mega-menu.active .mega-menu-content {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mega-menu.active.animation .mega-menu-content {
+  transform: translateY(0);
+}
+
+/* Close Button */
+.mega-menu-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gunmetal);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.mega-menu-close:hover {
+  transform: rotate(90deg);
+  color: var(--color-ecru);
+}
+
+.mega-menu-close .material-symbols-outlined {
+  font-size: 32px;
+}
+
+/* Inner Layout - Two Panel Design */
+.mega-menu-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+/* =====================================
+   LEFT PANEL - Main Categories
+   ===================================== */
+
+.mega-menu-left {
+  background-color: var(--color-gunmetal);
+  padding: 80px 48px 48px;
+  display: grid;
+  grid-template-columns: 200px 200px 1fr;
+  gap: 48px;
+  height: 100vh;
+  position: relative;
+}
+
+.mega-menu-categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-list li {
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-link {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-cream);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.category-list li.active .category-link {
+  padding-left: 12px;
+}
+
+/* Primary navigation column (Shop, About, Contact) */
+.category-list--primary {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-list--primary li {
+  margin-bottom: 16px;
+}
+
+.category-link--nav {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-cream);
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.category-link--nav:hover {
+  color: var(--color-cream);
+}
+
+/* Shop link active state - no extra styling, handled by JSX */
+.category-link--nav.active {
+  color: var(--color-cream);
+}
+
+.category-list li.active .category-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background-color: var(--color-ecru);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 4px;
+    opacity: 1;
+  }
+}
+
+/* Logo - Positioned absolutely to span across left panel */
+.mega-menu-logo {
+  position: absolute;
+  bottom: 48px;
+  left: 48px;
+  right: calc(70% + 48px); /* Stops at the middle, before right panel */
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.mega-menu-logo:hover {
+  opacity: 0.8;
+}
+
+.mega-menu-logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* =====================================
+   MIDDLE PANEL - Subcategories
+   ===================================== */
+
+.mega-menu-middle {
+  background-color: transparent;
+  padding: 0;
+  padding-bottom: 120px; /* Space for logo */
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.mega-menu-middle::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mega-menu-middle::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mega-menu-middle::-webkit-scrollbar-thumb {
+  background: rgba(247, 246, 239, 0.2);
+  border-radius: 3px;
+}
+
+.mega-menu-middle::-webkit-scrollbar-thumb:hover {
+  background: rgba(247, 246, 239, 0.3);
+}
+
+.mega-menu-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(247, 246, 239, 0.5);
+  margin-bottom: 32px;
+}
+
+/* Simple List (Collections & Featured) */
+.subcategory-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.subcategory-list li {
+  margin-bottom: 16px;
+  animation: fadeInUp 0.4s ease backwards;
+}
+
+.subcategory-list li:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.subcategory-list li:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.subcategory-list li:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.subcategory-list li:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.subcategory-list li:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subcategory-link {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-cream);
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.subcategory-link:hover {
+  color: var(--color-cream);
+  padding-left: 8px;
+}
+
+.subcategory-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 16px;
+  background-color: var(--color-ecru);
+  transition: width 0.2s ease;
+}
+
+.subcategory-link:hover::before {
+  width: 2px;
+}
+
+.item-count {
+  font-size: 14px;
+  color: rgba(247, 246, 239, 0.5);
+  font-style: italic;
+}
+
+/* Nested Categories */
+.nested-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.subcategory-group {
+  animation: fadeInUp 0.4s ease backwards;
+}
+
+.subcategory-group:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.subcategory-group:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.subcategory-group:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.subcategory-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-cream);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(247, 246, 239, 0.2);
+  transition: all 0.3s ease;
+}
+
+.subcategory-group.active .subcategory-title {
+  color: var(--color-cream);
+  border-bottom-color: var(--color-cream);
+}
+
+.subcategory-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 24px;
+}
+
+.subcategory-item-link {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(247, 246, 239, 0.8);
+  text-decoration: none;
+  display: block;
+  padding: 4px 0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.subcategory-item-link:hover {
+  color: rgba(247, 246, 239, 0.8);
+  padding-left: 8px;
+}
+
+.subcategory-item-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 12px;
+  background-color: var(--color-ecru);
+  transition: width 0.2s ease;
+}
+
+.subcategory-item-link:hover::before {
+  width: 2px;
+}
+
+/* =====================================
+   RIGHT PANEL - Image Preview
+   ===================================== */
+
+.mega-menu-right {
+  background-color: var(--color-cream);
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.mega-menu-image {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.mega-menu-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.05);
+}
+
+.mega-menu-image img:hover {
+  transform: scale(1.1);
+}
+
+/* =====================================
+   RESPONSIVE
+   ===================================== */
+
+@media (max-width: 1024px) {
+  .mega-menu-content {
+    max-width: 100%;
+    height: 500px;
+  }
+
+  .mega-menu-inner {
+    grid-template-columns: 240px 1fr 320px;
+  }
+
+  .mega-menu-left {
+    padding: 48px 24px 24px;
+  }
+
+  .mega-menu-middle {
+    padding: 48px 32px;
+  }
+
+  .subcategory-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mega-menu-content {
+    height: 100vh;
+    max-height: none;
+  }
+
+  .mega-menu-inner {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .mega-menu-right {
+    display: none;
+  }
+
+  .mega-menu-left {
+    padding: 80px 24px 24px;
+  }
+
+  .category-list {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+  }
+
+  .category-list li {
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+
+  .category-link {
+    font-size: 18px;
+  }
+
+  .mega-menu-logo {
+    display: none;
+  }
+
+  .mega-menu-middle {
+    padding: 32px 24px;
+    max-height: none;
+  }
+
+  .subcategory-items {
+    grid-template-columns: 1fr;
+  }
+}

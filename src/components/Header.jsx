@@ -5,9 +5,11 @@ import { useAuth } from '../contexts/AuthContext';
 import { theme } from '../config/theme';
 import Cart from './cart/Cart';
 import MobileMenu from './MobileMenu';
+import MegaMenu from './navigation/MegaMenu';
 
 export default function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -58,11 +60,16 @@ export default function Header() {
 
   return (
     <>
-      <header className={`header ${isVisible ? 'header--visible' : 'header--hidden'} ${isScrolled ? 'header--scrolled' : ''}`}>
+      <header className={`header ${isVisible ? 'header--visible' : 'header--hidden'} ${isScrolled ? 'header--scrolled' : ''} ${isMegaMenuOpen ? 'header--mega-menu-open hover' : ''}`}>
         <div className="header-content">
           {/* Desktop Navigation - Left */}
           <nav className="nav desktop-nav">
-            <NavLink to="/products" className="nav-link">Shop</NavLink>
+            <button
+              className="nav-link nav-link-button"
+              onClick={() => setIsMegaMenuOpen(true)}
+            >
+              Shop
+            </button>
             <a href="/#about" className="nav-link">About</a>
             <NavLink to="/contact" className="nav-link">Contact</NavLink>
             {user?.role === 'admin' && (
@@ -104,6 +111,7 @@ export default function Header() {
         </div>
       </header>
 
+      <MegaMenu isOpen={isMegaMenuOpen} onClose={() => setIsMegaMenuOpen(false)} />
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
