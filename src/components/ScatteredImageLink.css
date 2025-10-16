@@ -1,0 +1,228 @@
+/* =====================================================
+   SCATTERED IMAGE LINK - Kelly Wearstler Inspired
+   ===================================================== */
+
+.scattered-image-link {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-cream);
+}
+
+/* =====================================
+   LEFT IMAGE - Single Large Image
+   ===================================== */
+
+.scattered-image-link .left-image {
+  position: relative;
+  display: block;
+  width: 50%;
+  height: 70vh;
+  background-color: #e8e4db;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.scattered-image-link .left-image img {
+  display: block;
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scattered-image-link .left-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Image Overlay Text */
+.scattered-image-link .image-overlay-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.scattered-image-link .collection-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-cream);
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.scattered-image-link .shop-now {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-cream);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* =====================================
+   RIGHT IMAGE - Single Image
+   ===================================== */
+
+.scattered-image-link .right-image {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  height: 70vh;
+  background-color: var(--color-cream);
+  overflow: hidden;
+  text-decoration: none;
+  padding: 25px;
+}
+
+.scattered-image-link .right-image img {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  max-height: 375px;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scattered-image-link .right-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Right Image Title */
+.scattered-image-link .right-image-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-gunmetal);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Right Image Shop */
+.scattered-image-link .right-image-shop {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-gunmetal);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* =====================================
+   RESPONSIVE
+   ===================================== */
+
+@media (max-width: 1024px) {
+  .scattered-image-link .left-image,
+  .scattered-image-link .right-image {
+    min-height: 500px;
+  }
+
+  .scattered-image-link .left-image img {
+    min-height: 500px;
+  }
+
+  .scattered-image-link .right-image img {
+    max-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scattered-image-link {
+    flex-direction: column;
+  }
+
+  .scattered-image-link .left-image,
+  .scattered-image-link .right-image {
+    width: 100%;
+    min-height: 400px;
+  }
+
+  .scattered-image-link .left-image img {
+    min-height: 400px;
+  }
+
+  .scattered-image-link .right-image img {
+    max-height: 300px;
+  }
+
+  .scattered-image-link .right-image {
+    padding: 20px;
+  }
+
+  .scattered-image-link .image-overlay-text {
+    bottom: 15px;
+    left: 15px;
+  }
+
+  .scattered-image-link .collection-title {
+    font-size: 20px;
+  }
+
+  .scattered-image-link .shop-now {
+    font-size: 12px;
+  }
+
+  .scattered-image-link .right-image-title {
+    font-size: 20px;
+  }
+
+  .scattered-image-link .right-image-shop {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scattered-image-link .left-image,
+  .scattered-image-link .right-image {
+    min-height: 300px;
+  }
+
+  .scattered-image-link .left-image img {
+    min-height: 300px;
+  }
+
+  .scattered-image-link .right-image img {
+    max-height: 250px;
+  }
+
+  .scattered-image-link .right-image {
+    padding: 15px;
+  }
+
+  .scattered-image-link .image-overlay-text {
+    bottom: 12px;
+    left: 12px;
+  }
+
+  .scattered-image-link .collection-title {
+    font-size: 18px;
+  }
+
+  .scattered-image-link .shop-now {
+    font-size: 11px;
+  }
+
+  .scattered-image-link .right-image-title {
+    font-size: 18px;
+  }
+
+  .scattered-image-link .right-image-shop {
+    font-size: 11px;
+  }
+}

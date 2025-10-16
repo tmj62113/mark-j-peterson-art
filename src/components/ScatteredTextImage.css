@@ -1,0 +1,204 @@
+/* =====================================================
+   SCATTERED TEXT IMAGE - Kelly Wearstler Inspired
+   ===================================================== */
+
+.scattered-text-image {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-cream);
+}
+
+/* =====================================
+   LEFT TEXT - Bold Text Content
+   ===================================== */
+
+.scattered-text-image .text-side {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 50%;
+  height: 70vh;
+  background-color: var(--color-cream);
+  text-decoration: none;
+  padding: 60px;
+}
+
+.scattered-text-image .bold-text {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-gunmetal);
+  margin: 0;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+.scattered-text-image .text-side:hover .bold-text {
+  color: var(--color-dark);
+  transition: color 0.3s ease;
+}
+
+/* =====================================
+   RIGHT IMAGE - Full Width Image
+   ===================================== */
+
+.scattered-text-image .image-side {
+  position: relative;
+  display: block;
+  width: 50%;
+  height: 70vh;
+  background-color: #e8e4db;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.scattered-text-image .image-side img {
+  display: block;
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scattered-text-image .image-side:hover img {
+  transform: scale(1.05);
+}
+
+/* Image Overlay Text */
+.scattered-text-image .image-overlay-text {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+.scattered-text-image .image-side-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-cream);
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.scattered-text-image .image-side-shop {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-cream);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* =====================================
+   RESPONSIVE
+   ===================================== */
+
+@media (max-width: 1024px) {
+  .scattered-text-image .text-side,
+  .scattered-text-image .image-side {
+    min-height: 500px;
+  }
+
+  .scattered-text-image .image-side img {
+    min-height: 500px;
+  }
+
+  .scattered-text-image .text-side {
+    padding: 50px;
+  }
+
+  .scattered-text-image .bold-text {
+    font-size: 24px;
+  }
+
+  .scattered-text-image .image-overlay-text {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .scattered-text-image .image-side-title {
+    font-size: 20px;
+  }
+
+  .scattered-text-image .image-side-shop {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scattered-text-image {
+    flex-direction: column;
+  }
+
+  .scattered-text-image .text-side,
+  .scattered-text-image .image-side {
+    width: 100%;
+    min-height: 400px;
+  }
+
+  .scattered-text-image .image-side img {
+    min-height: 400px;
+  }
+
+  .scattered-text-image .text-side {
+    padding: 40px;
+  }
+
+  .scattered-text-image .bold-text {
+    font-size: 22px;
+  }
+
+  .scattered-text-image .image-overlay-text {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .scattered-text-image .image-side-title {
+    font-size: 20px;
+  }
+
+  .scattered-text-image .image-side-shop {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scattered-text-image .text-side,
+  .scattered-text-image .image-side {
+    min-height: 300px;
+  }
+
+  .scattered-text-image .image-side img {
+    min-height: 300px;
+  }
+
+  .scattered-text-image .text-side {
+    padding: 30px;
+  }
+
+  .scattered-text-image .bold-text {
+    font-size: 20px;
+  }
+
+  .scattered-text-image .image-overlay-text {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .scattered-text-image .image-side-title {
+    font-size: 18px;
+  }
+
+  .scattered-text-image .image-side-shop {
+    font-size: 11px;
+  }
+}

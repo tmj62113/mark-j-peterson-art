@@ -1,5 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import ThreeTileSlider from '../components/ThreeTileSlider';
+import ScatteredImageLink from '../components/ScatteredImageLink';
+import ScatteredTextImage from '../components/ScatteredTextImage';
 import './Home.css';
 
 export default function Home() {
@@ -132,6 +135,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Scattered Image Link Section */}
+      <ScatteredImageLink />
+
+      {/* Scattered Text Image Section */}
+      <ScatteredTextImage />
+
       {/* Collections Section */}
       <section id="collections" className="collections-section">
         <div className="container">
@@ -193,6 +202,9 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* Three Tile Slider */}
+      <ThreeTileSlider />
     </div>
   );
 }
