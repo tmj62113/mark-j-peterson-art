@@ -25,7 +25,7 @@ export default function MegaMenu({ isOpen, onClose }) {
     }
   }, [isOpen]);
 
-  // Menu data structure matching the collections and categories
+  // Menu data structure matching the collections and featured
   const menuData = {
     collections: {
       title: 'Collections',
@@ -35,62 +35,22 @@ export default function MegaMenu({ isOpen, onClose }) {
           id: 'steampunk',
           name: 'Steampunk Art',
           count: '24 pieces',
-          link: '/products?category=Steampunk',
+          link: '/products',
           image: '/images/homepage/collections/grid-1/00tv_bowlingpin.JPG',
         },
         {
           id: 'brass-copper',
           name: 'Brass & Copper',
           count: '32 pieces',
-          link: '/products?category=Brass%20%26%20Copper',
+          link: '/products',
           image: '/images/homepage/collections/grid 2/airplane.JPG',
         },
         {
           id: 'victorian',
           name: 'Victorian Dreams',
           count: '15 pieces',
-          link: '/products?category=Victorian',
+          link: '/products',
           image: '/images/homepage/collections/ink/IMG_1165.JPG',
-        },
-      ],
-    },
-    categories: {
-      title: 'Categories',
-      image: '/images/homepage/artwork/IMG_1712.PNG',
-      subcategories: [
-        {
-          id: 'original-art',
-          name: 'Original Art',
-          image: '/images/homepage/artwork/IMG_1714.JPG',
-          items: [
-            { name: 'Paintings', link: '/products?type=painting' },
-            { name: 'Sculptures', link: '/products?type=sculpture' },
-            { name: 'Mixed Media', link: '/products?type=mixed-media' },
-            { name: 'View All Originals', link: '/products?original=true' },
-          ],
-        },
-        {
-          id: 'prints',
-          name: 'Prints',
-          image: '/images/homepage/artwork/IMG_1716.PNG',
-          items: [
-            { name: 'Canvas Prints', link: '/products?format=canvas' },
-            { name: 'Metal Prints', link: '/products?format=metal' },
-            { name: 'Framed Prints', link: '/products?format=framed' },
-            { name: 'Paper Prints', link: '/products?format=paper' },
-            { name: 'View All Prints', link: '/products?type=print' },
-          ],
-        },
-        {
-          id: 'by-size',
-          name: 'By Size',
-          image: '/images/homepage/artwork/IMG_1720.PNG',
-          items: [
-            { name: 'Small (under 12")', link: '/products?size=small' },
-            { name: 'Medium (12-24")', link: '/products?size=medium' },
-            { name: 'Large (24-36")', link: '/products?size=large' },
-            { name: 'Extra Large (over 36")', link: '/products?size=xlarge' },
-          ],
         },
       ],
     },
@@ -101,25 +61,25 @@ export default function MegaMenu({ isOpen, onClose }) {
         {
           id: 'new-arrivals',
           name: 'New Arrivals',
-          link: '/products?sort=newest',
+          link: '/products',
           image: '/images/homepage/artwork/IMG_1722.PNG',
         },
         {
           id: 'best-sellers',
           name: 'Best Sellers',
-          link: '/products?sort=popular',
+          link: '/products',
           image: '/images/homepage/artwork/IMG_1725.PNG',
         },
         {
           id: 'limited-edition',
           name: 'Limited Edition',
-          link: '/products?limited=true',
+          link: '/products',
           image: '/images/homepage/artwork/IMG_1730.PNG',
         },
         {
           id: 'sale',
           name: 'Sale',
-          link: '/products?sale=true',
+          link: '/products',
           image: '/images/homepage/artwork/IMG_1732.JPG',
         },
       ],
@@ -177,71 +137,35 @@ export default function MegaMenu({ isOpen, onClose }) {
               </ul>
             </div>
 
-            {/* Column 2 - Shop Categories */}
+            {/* Column 2 - Shop Categories with Subitems */}
             <div className="mega-menu-categories">
-              <ul className="category-list">
-                <li
-                  className={activeCategory === 'collections' ? 'active' : ''}
-                  onMouseEnter={() => handleCategoryHover('collections')}
-                >
-                  <span className="category-link">Collections</span>
-                </li>
-                <li
-                  className={activeCategory === 'categories' ? 'active' : ''}
-                  onMouseEnter={() => handleCategoryHover('categories')}
-                >
-                  <span className="category-link">Categories</span>
-                </li>
-                <li
-                  className={activeCategory === 'featured' ? 'active' : ''}
-                  onMouseEnter={() => handleCategoryHover('featured')}
-                >
-                  <span className="category-link">Featured</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 3 - Subcategories */}
-            <div className="mega-menu-middle">
-            <h3 className="mega-menu-title">{currentMenu.title}</h3>
-
-            {/* Collections or Featured - Simple List */}
-            {(activeCategory === 'collections' || activeCategory === 'featured') && (
-              <ul className="subcategory-list">
-                {currentMenu.items.map((item) => (
-                  <li key={item.id} onMouseEnter={() => handleItemHover(item)}>
-                    <Link to={item.link} className="subcategory-link" onClick={onClose}>
-                      {item.name}
-                      {item.count && <span className="item-count">{item.count}</span>}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {/* Categories - Nested Structure */}
-            {activeCategory === 'categories' && (
-              <div className="nested-categories">
-                {currentMenu.subcategories.map((subcategory) => (
-                  <div
-                    key={subcategory.id}
-                    className={`subcategory-group ${activeSubcategory === subcategory.id ? 'active' : ''}`}
-                    onMouseEnter={() => handleSubcategoryHover(subcategory)}
-                  >
-                    <h4 className="subcategory-title">{subcategory.name}</h4>
-                    <ul className="subcategory-items">
-                      {subcategory.items.map((item, idx) => (
-                        <li key={idx}>
-                          <Link to={item.link} className="subcategory-item-link" onClick={onClose}>
-                            {item.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+              {/* Collections Section */}
+              <div className="category-section">
+                <h3 className="category-heading">Collections</h3>
+                <ul className="category-subitems">
+                  {menuData.collections.items.map((item) => (
+                    <li key={item.id} onMouseEnter={() => handleItemHover(item)}>
+                      <Link to={item.link} className="category-subitem-link" onClick={onClose}>
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            )}
+
+              {/* Featured Section */}
+              <div className="category-section">
+                <h3 className="category-heading">Featured</h3>
+                <ul className="category-subitems">
+                  {menuData.featured.items.map((item) => (
+                    <li key={item.id} onMouseEnter={() => handleItemHover(item)}>
+                      <Link to={item.link} className="category-subitem-link" onClick={onClose}>
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -254,7 +178,7 @@ export default function MegaMenu({ isOpen, onClose }) {
 
           {/* Logo - Spans across left and middle panels */}
           <Link to="/" className="mega-menu-logo" onClick={onClose}>
-            <img src="/peterson_logo.png" alt="MJ Peterson Art" />
+            <img src="/peterson_logo_dark.png" alt="MJ Peterson Art" />
           </Link>
         </div>
       </div>

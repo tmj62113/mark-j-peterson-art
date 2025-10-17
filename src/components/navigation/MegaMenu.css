@@ -75,14 +75,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-gunmetal);
+  color: var(--color-cream);
   transition: all 0.3s ease;
   z-index: 10;
 }
 
 .mega-menu-close:hover {
   transform: rotate(90deg);
-  color: var(--color-ecru);
+  color: var(--color-rust);
 }
 
 .mega-menu-close .material-symbols-outlined {
@@ -104,10 +104,10 @@
    ===================================== */
 
 .mega-menu-left {
-  background-color: var(--color-gunmetal);
-  padding: 80px 48px 48px;
+  background-color: var(--color-cream);
+  padding: 80px 48px 140px;
   display: grid;
-  grid-template-columns: 200px 200px 1fr;
+  grid-template-columns: 200px 200px;
   gap: 48px;
   height: 100vh;
   position: relative;
@@ -116,6 +116,7 @@
 .mega-menu-categories {
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
 .category-list {
@@ -125,16 +126,16 @@
 }
 
 .category-list li {
-  margin-bottom: 16px;
+  margin-bottom: 6px;
   position: relative;
   overflow: hidden;
 }
 
 .category-link {
   font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--color-cream);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gunmetal);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -142,6 +143,9 @@
   padding: 8px 0;
   transition: all 0.2s ease;
   position: relative;
+  line-height: 14px;
+  text-transform: capitalize;
+  letter-spacing: normal;
 }
 
 .category-list li.active .category-link {
@@ -155,31 +159,30 @@
   margin: 0;
 }
 
-.category-list--primary li {
-  margin-bottom: 16px;
-}
-
 .category-link--nav {
   font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--color-cream);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gunmetal);
   text-decoration: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
+  padding: 0;
   transition: all 0.2s ease;
   cursor: pointer;
+  line-height: 14px;
+  text-transform: capitalize;
+  letter-spacing: normal;
 }
 
 .category-link--nav:hover {
-  color: var(--color-cream);
+  color: var(--color-gunmetal);
 }
 
 /* Shop link active state - no extra styling, handled by JSX */
 .category-link--nav.active {
-  color: var(--color-cream);
+  color: var(--color-gunmetal);
 }
 
 .category-list li.active .category-link::before {
@@ -205,12 +208,61 @@
   }
 }
 
-/* Logo - Positioned absolutely to span across left panel */
+/* Category Section with Subitems */
+.category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category-heading {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gunmetal);
+  line-height: 14px;
+  text-transform: capitalize;
+  letter-spacing: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.category-subitems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.category-subitem-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gunmetal);
+  text-decoration: none;
+  display: block;
+  padding: 0;
+  transition: all 0.2s ease;
+  position: relative;
+  line-height: 14px;
+  text-transform: capitalize;
+  letter-spacing: normal;
+  opacity: 0.7;
+}
+
+.category-subitem-link:hover {
+  color: var(--color-gunmetal);
+  opacity: 1;
+}
+
+/* Logo - Large like Kelly Wearstler homepage header */
 .mega-menu-logo {
   position: absolute;
-  bottom: 48px;
+  bottom: 30px;
   left: 48px;
-  right: calc(70% + 48px); /* Stops at the middle, before right panel */
+  width: 30%;
   z-index: 10;
   pointer-events: auto;
   cursor: pointer;
@@ -224,6 +276,7 @@
 .mega-menu-logo img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 /* =====================================
@@ -247,22 +300,23 @@
 }
 
 .mega-menu-middle::-webkit-scrollbar-thumb {
-  background: rgba(247, 246, 239, 0.2);
+  background: rgba(9, 18, 22, 0.2);
   border-radius: 3px;
 }
 
 .mega-menu-middle::-webkit-scrollbar-thumb:hover {
-  background: rgba(247, 246, 239, 0.3);
+  background: rgba(9, 18, 22, 0.3);
 }
 
 .mega-menu-title {
   font-family: var(--font-heading);
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(247, 246, 239, 0.5);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: normal;
+  color: rgba(9, 18, 22, 0.5);
   margin-bottom: 32px;
+  line-height: 14px;
 }
 
 /* Simple List (Collections & Featured) */
@@ -273,7 +327,7 @@
 }
 
 .subcategory-list li {
-  margin-bottom: 16px;
+  margin-bottom: 6px;
   animation: fadeInUp 0.4s ease backwards;
 }
 
@@ -306,9 +360,9 @@
 
 .subcategory-link {
   font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--color-cream);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gunmetal);
   text-decoration: none;
   display: flex;
   justify-content: space-between;
@@ -316,10 +370,13 @@
   padding: 8px 0;
   transition: all 0.2s ease;
   position: relative;
+  line-height: 14px;
+  text-transform: capitalize;
+  letter-spacing: normal;
 }
 
 .subcategory-link:hover {
-  color: var(--color-cream);
+  color: var(--color-gunmetal);
   padding-left: 8px;
 }
 
@@ -341,7 +398,7 @@
 
 .item-count {
   font-size: 14px;
-  color: rgba(247, 246, 239, 0.5);
+  color: rgba(9, 18, 22, 0.5);
   font-style: italic;
 }
 
@@ -368,18 +425,21 @@
 
 .subcategory-title {
   font-family: var(--font-heading);
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--color-cream);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gunmetal);
   margin-bottom: 16px;
   padding-bottom: 8px;
-  border-bottom: 2px solid rgba(247, 246, 239, 0.2);
+  border-bottom: 2px solid rgba(9, 18, 22, 0.2);
   transition: all 0.3s ease;
+  line-height: 14px;
+  text-transform: capitalize;
+  letter-spacing: normal;
 }
 
 .subcategory-group.active .subcategory-title {
-  color: var(--color-cream);
-  border-bottom-color: var(--color-cream);
+  color: var(--color-gunmetal);
+  border-bottom-color: var(--color-gunmetal);
 }
 
 .subcategory-items {
@@ -393,18 +453,21 @@
 
 .subcategory-item-link {
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 400;
-  color: rgba(247, 246, 239, 0.8);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(9, 18, 22, 0.8);
   text-decoration: none;
   display: block;
   padding: 4px 0;
   transition: all 0.2s ease;
   position: relative;
+  line-height: 14px;
+  text-transform: capitalize;
+  letter-spacing: normal;
 }
 
 .subcategory-item-link:hover {
-  color: rgba(247, 246, 239, 0.8);
+  color: rgba(9, 18, 22, 0.8);
   padding-left: 8px;
 }
 
@@ -429,7 +492,7 @@
    ===================================== */
 
 .mega-menu-right {
-  background-color: var(--color-cream);
+  background-color: var(--color-gunmetal);
   padding: 0;
   overflow: hidden;
   height: 100vh;
