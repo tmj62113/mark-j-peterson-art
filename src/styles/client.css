@@ -241,7 +241,7 @@ button[type="submit"]:hover {
    HEADER & NAVIGATION
    ===================================== */
 
-/* Header - Default transparent at top */
+/* Header - Static positioning, transparent at top */
 .header,
 header {
   background-color: transparent;
@@ -251,8 +251,6 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: transform 0.3s ease, background-color 0.3s ease,
-    box-shadow 0.3s ease;
 }
 
 /* Interior pages - Gunmetal header background (when NOT on home page) */
@@ -260,41 +258,13 @@ body:not(:has(.home-container)) .header,
 body:not(:has(.home-container)) header {
   background-color: var(--color-gunmetal);
   border-bottom: 1px solid rgba(247, 246, 239, 0.1);
-  position: sticky;
-}
-
-/* Header visible - default state */
-.header.header--visible {
-  transform: translateY(0);
-}
-
-/* When scrolled, switch to fixed positioning smoothly */
-.header.header--scrolled {
-  position: fixed;
-}
-
-/* Header hidden when scrolling down */
-.header.header--hidden {
-  position: fixed;
-  transform: translateY(-100%);
-}
-
-/* When scrolled past threshold and visible, add background */
-.header.header--scrolled.header--visible {
-  background-color: var(--color-gunmetal);
-  border-bottom: 1px solid rgba(247, 246, 239, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 /* Hide header when mega menu is open */
 .header.header--mega-menu-open {
   opacity: 0;
   pointer-events: none;
-}
-
-/* Hover state when mega menu is open - matches Kelly Wearstler */
-.header.hover {
-  /* Additional styling for hover state can go here if needed */
 }
 
 /* Header content - Three column flex layout */

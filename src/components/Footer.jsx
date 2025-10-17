@@ -18,6 +18,7 @@ export default function Footer() {
             <Link to="/contact">Contact</Link>
             <Link to="/about">About</Link>
             <Link to="/products">Shop</Link>
+            <Link to="/admin">Admin</Link>
           </nav>
         </div>
 
